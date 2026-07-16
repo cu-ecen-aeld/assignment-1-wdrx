@@ -12,9 +12,11 @@ jobs:
             options: --platform linux/amd64
         runs-on: self-hosted
         steps:
-          - uses: actions/checkout@v4
-          - name: Checkout submodules
-            run : git submodule update --init --recursive
+          - name: Clone repository
+            run: |
+              git clone "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" .
+              git checkout "$GITHUB_SHA"
+              git submodule update --init --recursive
           - name: Run unit test
             run: ./unit-test.sh
     full-test:
@@ -23,8 +25,10 @@ jobs:
             options: --platform linux/amd64
         runs-on: self-hosted
         steps:
-          - uses: actions/checkout@v4
-          - name: Checkout submodules
-            run : git submodule update --init --recursive
+          - name: Clone repository
+            run: |
+              git clone "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" .
+              git checkout "$GITHUB_SHA"
+              git submodule update --init --recursive
           - name: Run full test
             run: ./full-test.sh
