@@ -12,6 +12,11 @@ jobs:
             options: --platform linux/amd64
         runs-on: self-hosted
         steps:
+          - name: Self-check
+            run: |
+              echo "Running on $(uname -a)"
+              echo "Running on $(cat /etc/os-release)"
+              echo "Running on $(lsb_release -a)"
           - name: Clone repository
             run: |
               find . -mindepth 1 -delete 2>/dev/null || true
@@ -26,6 +31,11 @@ jobs:
             options: --platform linux/amd64
         runs-on: self-hosted
         steps:
+          - name: Self-check
+            run: |
+              echo "Running on $(uname -a)"
+              echo "Running on $(cat /etc/os-release)"
+              echo "Running on $(lsb_release -a)"
           - name: Clone repository
             run: |
               find . -mindepth 1 -delete 2>/dev/null || true
