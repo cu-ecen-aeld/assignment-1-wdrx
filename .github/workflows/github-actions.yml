@@ -14,6 +14,7 @@ jobs:
         steps:
           - name: Clone repository
             run: |
+              find . -mindepth 1 -delete 2>/dev/null || true
               git clone "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" .
               git checkout "$GITHUB_SHA"
               git submodule update --init --recursive
@@ -27,6 +28,7 @@ jobs:
         steps:
           - name: Clone repository
             run: |
+              find . -mindepth 1 -delete 2>/dev/null || true
               git clone "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" .
               git checkout "$GITHUB_SHA"
               git submodule update --init --recursive
